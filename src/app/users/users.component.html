@@ -35,7 +35,7 @@
         </div>
         <div class="col-12 mx-auto my-0">
             <div class="users-items">
-                <div (click)="goToPerfil(user?.login)" class="user-item" *ngFor="let user of users; let i = index;">
+                <div (click)="goToPerfil(user?.login, user?.score)" class="user-item" *ngFor="let user of users; let i = index;">
                     <div class="container">
                         <div class="row">
                           <div class="col">
@@ -44,6 +44,7 @@
                           <div class="col w-50">
                             <p class="text-info">{{ user?.login }}</p>
                             <p class="text-info">{{ user?.id }}</p>
+                            <p class="text-info">{{ user?.score }}</p>
                           </div>
                         </div>
                       </div>

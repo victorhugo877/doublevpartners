@@ -20,7 +20,7 @@ export class UsersComponent {
   alertShow:boolean = false;
   alertView:Alert = {
     type: "Sucess",
-    message: "Usuarios registrado de manera Exitosa!!"
+    message: "Busqueda Exitosa!!"
   }
   users:Item[]=[DATA_INIT_USER];
   userSearch:string = 'YOUR_NAME';
@@ -45,11 +45,6 @@ export class UsersComponent {
   }
 
   ngOnInit() {
-    // this.paginator.page.subscribe((event: PageEvent) => {
-    //   this.page = event.pageIndex;
-    //   this.per_page = event.pageSize;
-      
-    // });
     this.getUsers();
   }
 
@@ -95,9 +90,6 @@ export class UsersComponent {
     this.alertShow=false;
   }
 
-  welcome():void {
-    this.router.navigate(["/todo"]);
-  }
 
   searchUser():void {
     this.userSearch = this.formUsers?.value?.user;
@@ -110,8 +102,18 @@ export class UsersComponent {
     this.getUsers();
   }
 
-  goToPerfil(user:any): void {
-    window.open(`${environment.userGitHub}${user}`, '_blank');
+  goToPerfil(user:any, score:any): void {
+    if(user?.score >= 30){
+      window.open(`${environment.userGitHub}${user}`, '_blank');
+    }else{
+      this.alertView = {
+        type: 'danger',
+        message: `No es posible ir al perfil de ${user} su puntaje es ${score}`,
+      }
+      this.alertShow=true;
+      window.scrollTo(0, 0)
+    }
+    
   }
 
   ngAfterViewInit(): void {
@@ -138,6 +140,17 @@ export class UsersComponent {
           login: user.login,
           id: user.id
         }))
+      )
+      .pipe(
+        catchError((e) => {
+          this.alertShow=true;
+          this.spinner.hide();
+          this.alertView = {
+            type: 'danger',
+            message: 'Ha ocurrido un error, Se excedió el límite de tasa de API, No se pueden mostrar los datos para la grafica',
+          }
+          throw e;
+        })
       )
     );
     forkJoin(observables).subscribe(

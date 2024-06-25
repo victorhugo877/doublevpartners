@@ -93,15 +93,19 @@ input[type="password"]::placeholder {
 }
 .users-items{
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas con ancho igualmente distribuido */
-    grid-template-rows: repeat(4, 100px); /* 3 filas con altura de 100px cada una */
-    gap: 10px; /* Espacio entre los elementos */
+    grid-template-columns: repeat(3, 1fr); 
+    grid-template-rows: repeat(4, 100px); 
+    gap: 10px; 
 }
 .user-item{
-    background-color: lightblue; /* Color de fondo para los elementos (opcional) */
-    padding: 20px; /* Relleno dentro de cada elemento (opcional) */
-    text-align: center; /* Alineación del texto dentro del elemento (opcional) */
+    background-color: lightblue;
+    padding: 20px; 
+    text-align: center;
     cursor: pointer;
+    border-radius: 10px;
+    transition: none;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);
     .avatar{
         width: 4rem;
     }

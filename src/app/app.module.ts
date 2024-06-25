@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from "ngx-cookie-service";
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './small-features/header/header.component';
+import { FooterComponent } from './small-features/footer/footer.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 
 //State
@@ -24,7 +25,8 @@ import INITIAL_STATE = AppStateModel.INITIAL_STATE;
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
