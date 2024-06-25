@@ -1,0 +1,70 @@
+<ng-container *ngIf="alertShow">
+    <ngb-alert [type]="alertView.type" (closed)="close()">{{ alertView.message }}</ngb-alert>
+</ng-container>
+<div class="title-users">
+    <p>Busque usuarios registrados en gitHub</p>
+</div>
+<div class="container contenedor">
+    <div class="container-app-todo">
+        <div class="header-app">
+            <img class="header-app-img" src="../../assets/img/cat.svg" alt="">
+        </div>
+        <div class="col-12 mx-auto my-0">
+            <form class="user-container" [formGroup]="formUsers" (ngSubmit)="searchUser()">
+                <label class="users-init">Buscar usuario</label>
+                <div>
+                   <input
+                        class="user_search"
+                        type="text"
+                        formControlName="user"
+                        placeholder="Introduzca el nombre del usuario"
+                        [ngClass]="{'input-invalid': !formUsers?.valid && (formUsers.dirty || formUsers.touched)}"
+                    > 
+                </div>
+                
+                <div class="m-md-3 m-0 section-btns">
+                    <button
+                        type="submit"
+                        class="btn btn-primary btn-users btn-users-primary mx-md-3 mx-0"
+                        [disabled]="(!formUsers.valid || wordNotValid)"
+                    >
+                        {{ 'Buscar' }}
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-12 mx-auto my-0">
+            <div class="users-items">
+                <div (click)="goToPerfil(user?.login)" class="user-item" *ngFor="let user of users; let i = index;">
+                    <div class="container">
+                        <div class="row">
+                          <div class="col">
+                            <img class="avatar" [src]="user.avatar_url" alt="">
+                          </div>
+                          <div class="col w-50">
+                            <p class="text-info">{{ user?.login }}</p>
+                            <p class="text-info">{{ user?.id }}</p>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<mat-paginator
+  [pageSizeOptions]="[5, 10]"
+  showFirstLastButtons
+  (page)="onPaginateChange($event)">
+</mat-paginator>
+<div class="graph-chart">
+    <app-chart-vertical-bar></app-chart-vertical-bar>
+</div>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Buscando...</p>
+</ngx-spinner>

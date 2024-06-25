@@ -1,0 +1,125 @@
+.title-users{
+    text-align: center;
+    margin-left:auto;
+    margin-right:auto;
+    font-family:'Courier New', Courier, monospace;
+    font-size: 25px;
+    font-weight: 600;
+    p{
+        margin: 0;
+    }
+}
+.contenedor {
+    text-align: center;
+    margin-left:auto;
+    margin-right:auto;
+    width:60%
+}
+.container-app-todo{
+    width: 100%;
+    height:600px;
+    border-radius: 10px;
+    transition: none;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2)
+}
+.header-app {
+    height:100px;
+    background-color: cadetblue;
+    @media (max-width: 390px) {
+        height: 60px;
+    }
+    .header-app-img {
+        width: 100px;
+        height: inherit;
+        @media (max-width: 390px) {
+            width: 40px;
+        }
+    }
+}
+.users-init{
+    font-family:'Courier New', Courier, monospace;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 1rem 1rem;
+    @media (max-width: 390px) {
+        font-size: 12px;
+    }
+}
+input[type="email"],
+input[type="password"]{
+    @media (max-width: 390px) {
+        width: 100%;
+        font-size: 12px;
+    }
+}
+input[type="email"]::placeholder,
+input[type="password"]::placeholder {
+    @media (max-width: 390px) {
+        font-size: 12px;
+    }
+  }
+.btn-users{
+    width: 125px;
+    @media (max-width: 390px) {
+        width: 85%;
+    }
+}
+.btn-users:last-child {
+    @media (max-width: 390px) {
+        margin-top: 8px;
+    }
+  }
+.btn-users-primary{
+    background-color: cadetblue;
+}
+.to-register{
+    font-family:'Courier New', Courier, monospace;
+    font-size: 10px;
+    font-weight: 400;
+}
+.section-btns{
+    @media (max-width: 390px) {
+        padding: 1.5rem 0;
+    }
+}
+.user-container{
+    display: flex;
+    justify-content: center;
+}
+.user_search {
+    height: 2.3rem;
+    margin: 1rem 1rem;
+}
+.users-items{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas con ancho igualmente distribuido */
+    grid-template-rows: repeat(4, 100px); /* 3 filas con altura de 100px cada una */
+    gap: 10px; /* Espacio entre los elementos */
+}
+.user-item{
+    background-color: lightblue; /* Color de fondo para los elementos (opcional) */
+    padding: 20px; /* Relleno dentro de cada elemento (opcional) */
+    text-align: center; /* Alineación del texto dentro del elemento (opcional) */
+    cursor: pointer;
+    .avatar{
+        width: 4rem;
+    }
+    .text-info{
+        margin: 0;
+        font-size: 12px;
+        font-family: helvetica;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: rgba(0, 0, 0, .2);
+    }
+}
+.input-invalid {
+    border: 1px solid red;
+}
+.graph-chart{
+    display: block;
+    margin: 0 auto;
+    width: 50rem;
+}
